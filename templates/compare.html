@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  ​<link
-    rel="shortcut icon"
-    href="{{ url_for('static', filename='favicon.ico') }}"
-  />
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </head>
-  <header>
-    <h1>Signature</h1>
-    <br />
-  </header>
-  ​
+
   <body>
-    ​ ​ ​
+    <header>
+      <h1>Signature</h1>
+      <br />
+    </header>
+
     <center>
       <button style="width: 18vw; height: 15vh" onclick="loadImage()">
         가
@@ -36,48 +39,35 @@
         마
       </button>
 
-      ​ ​
       <div class="file">
-        <!-- '가' 버튼 클릭 시 이미지 로드 함수 호출 -->
-        ​ ​ ​ ​
         <br /><br />
-        ​
+
         <div class="B">
-          ​
           <div id="left-container" style="float: left; width: 45vw">
-            <!-- 여기에 이미지를 표시할 예정 -->
             <img
               id="loadedImage"
               src=""
               style="width: 100%; height: 50vh; display: none"
             />
           </div>
-          ​ ​
+
           <div id="right-container" style="float: right; width: 45vw">
             <video
               autoplay="true"
               id="videoElement"
               style="width: 45vw; height: 50vh"
             ></video>
-            ​
             <canvas id="canvas" style="display: none"></canvas>
           </div>
-          ​
         </div>
-        ​
       </div>
-      ​ ​ ​
+
       <br /><br />
-      ​
-      <!-- 촬영하기 버튼 클릭 시 캔버스에 이미지 그리기 -->
+
       <button style="width: 85vw; height: 7vh" onclick="takeSnapshot()">
         촬영하기
       </button>
       <div style="clear: both"></div>
     </center>
-    ​
-    <script src="{{ url_for('static', filename='cam.js') }}"></script>
-    ​ ​
   </body>
-  ​
 </html>

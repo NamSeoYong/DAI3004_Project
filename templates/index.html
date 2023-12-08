@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Signature</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='favicon.ico') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
 
-<body>
-
+  <body>
     <header>
-        <h1>Signature</h1>
-        <br>
+      <h1>Signature</h1>
+      <br />
     </header>
 
-    <br><br>
+    <br /><br />
     <center>
-        <button class="h_button" onclick="location.href='{{ url_for('object') }}'">서류 확인</button>
+      <button
+        class="h_button"
+        onclick="location.href='{{ url_for('compare') }}'"
+      >
+        서류 확인
+      </button>
     </center>
 
-    <br><br>
-    <br><br>
-    <br><br>
+    <br /><br />
+    <br /><br />
+    <br /><br />
     <center>
-        <button class="h_button" onclick="location.href='{{ url_for('cam') }}'">서명 하기</button>
+      <button class="h_button" onclick="location.href='{{ url_for('cam') }}'">
+        서명 하기
+      </button>
     </center>
-
-</body>
-
+  </body>
 </html>

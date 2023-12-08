@@ -7,9 +7,9 @@ app=Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/object')
-def object():
-    return render_template("object.html")
+@app.route('/compare')
+def compare():
+    return render_template("compare.html")
 
 @app.route('/cam')
 def cam():
