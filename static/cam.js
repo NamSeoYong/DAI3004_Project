@@ -17,6 +17,9 @@ function takeSnapshot() {
     canvas.height = video.videoHeight;
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     var dataURL = canvas.toDataURL("image/png");
+    // var a = ducument.createElement('a');
+    // a.href = dataURL;
+    // a.download='snapshot.png'
     var newTab = window.open();
     newTab.document.write('<img src="' + dataURL + '">');
 }

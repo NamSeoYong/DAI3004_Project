@@ -10,7 +10,3 @@ if (navigator.mediaDevices.getUserMedia) {
         });
 }
 
-function saveFiles() {
-    // Add your file-saving logic here
-}
-
