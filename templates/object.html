@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Signature</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Signature</h1>
+        <br>
+    </header>
+    <br>
+    <center>
+        <button onclick="writeToFile('가')">가</button>
+        <button onclick="writeToFile('나')">나</button>
+        <button onclick="writeToFile('다')">다</button>
+        <button onclick="writeToFile('라')">라</button>
+        <button onclick="writeToFile('마')">마</button>
+        <div id="container">
+            <video autoplay="true" id="videoElement"></video>
+            <canvas id="canvas" style="display: none;"></canvas>
+            <br>
+            <button onclick="takeSnapshot()">촬영하기</button>
+        </div>
+    </center>
+
+    <script src="{{ url_for('static', filename='cam.js') }}"></script>
+</body>
+
+</html>
