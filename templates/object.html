@@ -1,3 +1,6 @@
+<!--
+
+
 <!DOCTYPE html>
 <html lang="en">
   ​<link
@@ -5,7 +8,7 @@
     href="{{ url_for('static', filename='favicon.ico') }}"
   />
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,68 +19,54 @@
     <h1>Signature</h1>
     <br />
   </header>
-  ​
+  
   <body>
-    ​ ​ ​
+  
     <center>
-      <button style="width: 18vw; height: 15vh" onclick="loadImage()">
-        가
-      </button>
-      <button style="width: 18vw; height: 15vh" onclick="writeToFile('나')">
-        나
-      </button>
-      <button style="width: 18vw; height: 15vh" onclick="writeToFile('다')">
-        다
-      </button>
-      <button style="width: 18vw; height: 15vh" onclick="writeToFile('라')">
-        라
-      </button>
-      <button style="width: 18vw; height: 15vh" onclick="writeToFile('마')">
-        마
-      </button>
+      <button style="width:18vw; height: 13vh;"  onclick="loadImage()">가</button>
+      <button style="width:18vw; height: 13vh;" onclick="loadImage()">나</button>
+      <button style="width:18vw; height: 13vh;" onclick="loadImage()">다</button>
+      <button style="width:18vw; height: 13vh;" onclick="loadImage()">라</button>
+      <button style="width:18vw; height: 13vh;" onclick="loadImage()">마</button>
+ 
 
-      ​ ​
-      <div class="file">
-        <!-- '가' 버튼 클릭 시 이미지 로드 함수 호출 -->
-        ​ ​ ​ ​
-        <br /><br />
-        ​
-        <div class="B">
-          ​
-          <div id="left-container" style="float: left; width: 45vw">
-            <!-- 여기에 이미지를 표시할 예정 -->
-            <img
-              id="loadedImage"
-              src=""
-              style="width: 100%; height: 50vh; display: none"
-            />
-          </div>
-          ​ ​
-          <div id="right-container" style="float: right; width: 45vw">
-            <video
-              autoplay="true"
-              id="videoElement"
-              style="width: 45vw; height: 50vh"
-            ></video>
-            ​
-            <canvas id="canvas" style="display: none"></canvas>
-          </div>
-          ​
-        </div>
-        ​
-      </div>
-      ​ ​ ​
-      <br /><br />
+
       ​
-      <!-- 촬영하기 버튼 클릭 시 캔버스에 이미지 그리기 -->
-      <button style="width: 85vw; height: 7vh" onclick="takeSnapshot()">
-        촬영하기
-      </button>
-      <div style="clear: both"></div>
+      <div class="file">
+       
+        <br /><br />
+        <br><br>
+
+        <div class="B">
+
+            <div id="left-container" style="float:left; width:45vw;">
+              <img id="loadedImage" src="{% static 'file_A.png'%}" style="display:block;">
+
+            </div>
+
+
+            <div id="right-container" style="float:right; width:45vw;">
+                <video autoplay="true" id="videoElement" style="width:45vw; height:50vh;"></video>
+
+                <canvas id="canvas" ></canvas>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+        <br><br>
+            <button  style="width:85vw; height:7vh;" onclick="takeSnapshot()">촬영하기</button>
+            <div style="clear:both;"></div>
+            <br>
+
+            유사도 00% 
     </center>
-    ​
-    <script src="{{ url_for('static', filename='cam.js') }}"></script>
-    ​ ​
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
-  ​
+  
 </html>
+
+-->
