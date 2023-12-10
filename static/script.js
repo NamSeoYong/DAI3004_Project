@@ -24,6 +24,7 @@ window.onload = function () {
     }
 };
 
+
 function takeSnapshot() {
     // video와 canvas가 DOM에 존재하는지 확인합니다.
     if (video && canvas) {
@@ -35,28 +36,105 @@ function takeSnapshot() {
 
             // 캔버스에 비디오의 현재 프레임을 그립니다.
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            // 캔버스에서 이미지를 JPEG 형식으로 변환
+            var imageData = canvas.toDataURL('image/jpeg');
 
-            // 캔버스를 보이게 합니다. 이제 캡처된 이미지가 right-container 내의 캔버스에 표시됩니다.
-            canvas.style.display = "block";
-
-            // 비디오 요소를 숨깁니다.
-            video.style.display = "none";
+            // 서버로 전송
+            sendImageToServer(imageData);
         } else {
             console.error("비디오의 크기를 가져올 수 없습니다.");
         }
     } else {
         console.error("video 또는 canvas 요소를 찾을 수 없습니다.");
     }
+    video.style.display = "none";
+    //-----------------------파이썬 코드 연결-------------------------
+
+    $.ajax({
+        url: "/run_script",
+        type: "get",
+        success: function(response) {
+            console.log("run_script 완료", response);
+            // 첫 번째 요청이 성공한 후, 두 번째 요청을 보냅니다.
+            getSimilarity();
+        },
+        error: function(xhr) {
+            console.error("run_script 오류 발생:", xhr);
+        }
+    });
+
+}
+
+function sendImageToServer(imageData) {
+    fetch('/upload-image', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ image: imageData })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 }
 
 
-function loadImage() {
-    var img = document.getElementById('loadedImage');
-    if (img) {
-        img.style.display = 'block';  // 이미지를 보이게 합니다.
-        console.log('Image should be visible now');
+
+function loadImage(letter) {
+    var img1 = document.getElementById('loadedImage1');
+    var img2 = document.getElementById('loadedImage2');
+    var img3 = document.getElementById('loadedImage3');
+    if (letter == 'A') {
+        img1.style.display = 'block';  // 이미지를 보이게 합니다.
+        img2.style.display = 'none';
+        img3.style.display = 'none';
+        console.log('Image1 should be visible now');
+    } else if (letter == 'B') {
+        img1.style.display = 'none';  // 이미지를 보이게 합니다.
+        img2.style.display = 'block';
+        img3.style.display = 'none';
+        console.log('Image2 should be visible now');
+    } else if (letter == 'C') {
+        img1.style.display = 'none';  // 이미지를 보이게 합니다.
+        img2.style.display = 'none';
+        img3.style.display = 'block';
+        console.log('Image3 should be visible now');
     } else {
         console.log('Failed to find the image element');
     }
+
+    $.ajax({
+        url: "/receive_image_choice",
+        type: "POST",
+        data: { letter: letter },
+        success: function(response) {
+            console.log("서버 응답:", response);
+        },
+        error: function(xhr) {
+            console.error("오류 발생:", xhr);
+        }
+    });
 }
-        
+
+
+
+function getSimilarity() {
+    // 두 번째 AJAX 요청: /get_similarity
+    $.ajax({
+        url: "/get_similarity",
+        type: "get",
+        success: function(response) {
+            // 유사도 값으로 HTML 업데이트
+            $('#similarity').text('유사도 ' + response.similarity + '%');
+            console.log("유사도 완료", response);
+        },
+        error: function(xhr) {
+            console.error("get_similarity 오류 발생:", xhr);
+        }
+    });
+}
+
