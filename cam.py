@@ -18,7 +18,7 @@ def generate_frames():
         success, frame = cap.read()
         if not success:
             break
-        frame = cv2.flip(frame, 1)
+        # frame = cv2.flip(frame, 1)
 
         # 손 인식
         results = hands.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))

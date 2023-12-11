@@ -142,37 +142,3 @@ function getSimilarity() {
     },
   });
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  const video = document.querySelector("img");
-
-  fetch("/video_feed")
-    .then((response) => {
-      return response.body.getReader();
-    })
-    .then((reader) => {
-      const stream = new ReadableStream({
-        start(controller) {
-          function push() {
-            reader.read().then(({ done, value }) => {
-              if (done) {
-                controller.close();
-                return;
-              }
-              controller.enqueue(value);
-              push();
-            });
-          }
-          push();
-        },
-      });
-
-      return new MediaStream(stream);
-    })
-    .then((mediaStream) => {
-      video.srcObject = mediaStream;
-    })
-    .catch((error) => {
-      console.error("Error accessing webcam:", error);
-    });
-});
