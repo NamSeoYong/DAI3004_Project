@@ -53,25 +53,23 @@ with open('text/click.txt', "r", encoding="utf-8") as a:
 
 
 new_image_path = ''
-path = ''
 files = []
 
 if (cc == 'A'):
-    path = 'static/images/picture_A.jpg'
-    files = [('file', open(path,'rb'))]
     new_image_path = 'static/images/picture_A.jpg'
+    files = [('file', open(new_image_path,'rb'))]
+    
 elif (cc == 'B'):
-    path = 'static/images/picture_B.jpg'
-    files = [('file', open(path,'rb'))]
     new_image_path = 'static/images/picture_B.jpg'
+    files = [('file', open(new_image_path,'rb'))]
+    
 elif (cc == 'C'):
-    path = 'static/images/picture_C.jpg'
-    files = [('file', open(path,'rb'))]
     new_image_path = 'static/images/picture_C.jpg'
+    files = [('file', open(new_image_path,'rb'))]
     
 print("클릭: ", cc)
 print("new_image_path: ", new_image_path)
-print("path: ", path)
+
 print("files: ", files)
 
 import cv2
@@ -108,7 +106,7 @@ response = requests.request("POST", api_url, headers=headers, data=payload, file
 result = response.json()
 
 
-img = cv2.imread(path)
+img = cv2.imread(new_image_path)
 roi_img = img.copy()
 
 text=""
