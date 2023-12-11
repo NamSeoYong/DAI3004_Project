@@ -23,10 +23,16 @@
     </header>
 
     <center>
-      <button style="width:25vw; height: 13vh;"  onclick="loadImage('A')">가</button>
-      <button style="width:25vw; height: 13vh;" onclick="loadImage('B')">나</button>
-      <button style="width:25vw; height: 13vh;" onclick="loadImage('C')">다</button>
-    
+      <button style="width: 25vw; height: 13vh" onclick="loadImage('A')">
+        가
+      </button>
+      <button style="width: 25vw; height: 13vh" onclick="loadImage('B')">
+        나
+      </button>
+      <button style="width: 25vw; height: 13vh" onclick="loadImage('C')">
+        다
+      </button>
+
       <div class="file">
         <br /><br />
 
@@ -55,20 +61,21 @@
               id="videoElement"
               style="width: 100%; height: 50vh"
             ></video>
-            <canvas id="canvas" style="width: 45vw; height: 50vh display: none"></canvas>
+            <canvas
+              id="canvas"
+              style="width: 45vw; height: 50vh display: none"
+            ></canvas>
           </div>
         </div>
       </div>
-
 
       <button style="width: 85vw; height: 7vh" onclick="takeSnapshot()">
         촬영하기
       </button>
       <div style="clear: both"></div>
 
-      
       <div id="similarity">유사도 00%</div>
-
-    </center>    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </center>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>

@@ -1,16 +1,18 @@
 import cv2
 import mediapipe as mp
-from easyocr import Reader
 
 
 def generate_frames():
-    cnt = 0
-    results = []
+    boundingbox_arr = []
+    with open('text/boundingbox.txt', 'r') as f:
+        boundingbox_arr = parse(f.read())
+
     mp_hands = mp.solutions.hands
     hands = mp_hands.Hands()
     cap = cv2.VideoCapture(0)
 
-    reader = Reader(lang_list=['ko'], gpu=False)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
     while True:
         success, frame = cap.read()
@@ -33,8 +35,13 @@ def generate_frames():
 
         ret, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
-        cnt += 1
+
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
     cap.release()
+
+def parse(boundingbox_arr):
+    tmp = boundingbox_arr.split(";")   
+    arr = [int(i) for i in tmp]
+    return arr

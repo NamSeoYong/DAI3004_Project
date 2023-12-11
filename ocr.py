@@ -114,6 +114,8 @@ roi_img = img.copy()
 text=""
 result_text=""
 cnt=0
+boundingbox=""
+
 for field in result['images'][0]['fields']:
     text = field['inferText']
     result_text+= text
@@ -152,16 +154,17 @@ for field in result['images'][0]['fields']:
         cv2.line(roi_img, target_topRight, target_bottomRight, (0,0,255), 2)
         cv2.line(roi_img, target_bottomRight, target_bottomLeft, (0,0,255), 2)
         cv2.line(roi_img, target_bottomLeft, target_topLeft, (0,0,255), 2)
-   
+
+        boundingbox = f"{topLeft[0]};{topLeft[1]};{topRight[0]};{topRight[1]};{bottomLeft[0]};{bottomLeft[1]};{topRight[0]};{topRight[1]}"
+
 print(result_text)
  
 # plt_imshow(["Original", "ROI"], [img, roi_img], figsize=(16, 10))
 
-
-
-
 with open('text/output.txt', 'w', encoding='utf-8') as output_file:
     output_file.write(result_text)
+with open('text/boundingbox.txt', 'w', encoding='utf-8') as file:
+    file.write(boundingbox)
 
 print("Text saved to: output.txt")
 
