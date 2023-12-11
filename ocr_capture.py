@@ -54,18 +54,8 @@ with open('text/click.txt', "r", encoding="utf-8") as a:
 
 new_image_path = ''
 files = []
-
-if (cc == 'A'):
-    new_image_path = 'static/images/picture_A.jpg'
-    files = [('file', open(new_image_path,'rb'))]
-    
-elif (cc == 'B'):
-    new_image_path = 'static/images/picture_B.jpg'
-    files = [('file', open(new_image_path,'rb'))]
-    
-elif (cc == 'C'):
-    new_image_path = 'static/images/picture_C.jpg'
-    files = [('file', open(new_image_path,'rb'))]
+new_image_path = 'static\\uploads\\uploaded_image.jpg'
+files = [('file', open(new_image_path,'rb'))]
     
 print("클릭: ", cc)
 print("new_image_path: ", new_image_path)
@@ -160,10 +150,11 @@ print(result_text)
 
 # plt_imshow(["Original", "ROI"], [img, roi_img], figsize=(16, 10))
 
-with open('text/output.txt', 'w', encoding='utf-8') as output_file:
-    output_file.write(result_text)
 
-
+with open('text/boundingbox.txt', 'w', encoding='utf-8') as file:
+    file.write(boundingbox)
+    
+    
 print("Text saved to: output.txt")
 
 
