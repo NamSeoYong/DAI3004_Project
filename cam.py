@@ -6,6 +6,10 @@ def generate_frames():
     boundingbox_arr = []
     with open('text/boundingbox.txt', 'r') as f:
         boundingbox_arr = parse(f.read())
+    pt1 = (boundingbox_arr[0], boundingbox_arr[1])
+    pt2 = (boundingbox_arr[2], boundingbox_arr[3])
+    pt3 = (boundingbox_arr[4], boundingbox_arr[5])
+    pt4 = (boundingbox_arr[6], boundingbox_arr[7])
 
     mp_hands = mp.solutions.hands
     hands = mp_hands.Hands()
@@ -19,7 +23,10 @@ def generate_frames():
         if not success:
             break
         # frame = cv2.flip(frame, 1)
-
+        cv2.line(frame, pt1, pt2, (0, 0, 255), 2)
+        cv2.line(frame, pt2, pt3, (0, 0, 255), 2)
+        cv2.line(frame, pt3, pt4, (0, 0, 255), 2)
+        cv2.line(frame, pt4, pt1, (0, 0, 255), 2)
         # 손 인식
         results = hands.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
         if results.multi_hand_landmarks:

@@ -1,5 +1,6 @@
 
 from matplotlib import pyplot as plt
+ 
 import uuid
 import json
 import time
@@ -53,18 +54,8 @@ with open('text/click.txt', "r", encoding="utf-8") as a:
 
 new_image_path = ''
 files = []
-
-if (cc == 'A'):
-    new_image_path = 'static/images/picture_A.jpg'
-    files = [('file', open(new_image_path,'rb'))]
-    
-elif (cc == 'B'):
-    new_image_path = 'static/images/picture_B.jpg'
-    files = [('file', open(new_image_path,'rb'))]
-    
-elif (cc == 'C'):
-    new_image_path = 'static/images/picture_C.jpg'
-    files = [('file', open(new_image_path,'rb'))]
+new_image_path = 'static/uploads/uploaded_image.jpg'
+files = [('file', open(new_image_path,'rb'))]
     
 print("클릭: ", cc)
 print("new_image_path: ", new_image_path)
@@ -137,9 +128,14 @@ for field in result['images'][0]['fields']:
     #roi_img = put_text(roi_img, text, topLeft[0], topLeft[1] - 10, font_size=30)
 
     #서명 부분 빨간색으로 바운딩 박스 그리기
-    if text == "(인)":
+    if "(인)" in text or "(서명)" in text or "(서명 또는" in text or "(법인인감)" in text:
         print(f"Bounding Box Coordinates for '(인)': TopLeft={topLeft}, TopRight={topRight}, BottomRight={bottomRight}, BottomLeft={bottomLeft}")
-        boundingbox = f"{topLeft[0]};{topLeft[1]};{topRight[0]};{topRight[1]};{bottomLeft[0]};{bottomLeft[1]};{topRight[0]};{topRight[1]}"
+        target_topLeft, target_topRight, target_bottomRight, target_bottomLeft = topLeft, topRight, bottomRight, bottomLeft
+        print(f"Bounding Box Coordinates for '(서명)': TopLeft={topLeft}, TopRight={topRight}, BottomRight={bottomRight}, BottomLeft={bottomLeft}")
+        target_topLeft, target_topRight, target_bottomRight, target_bottomLeft = topLeft, topRight, bottomRight, bottomLeft
+        print(f"Bounding Box Coordinates for '(서명 또는': TopLeft={topLeft}, TopRight={topRight}, BottomRight={bottomRight}, BottomLeft={bottomLeft}")
+        target_topLeft, target_topRight, target_bottomRight, target_bottomLeft = topLeft, topRight, bottomRight, bottomLeft
+        print(f"Bounding Box Coordinates for '(법인인감)': TopLeft={topLeft}, TopRight={topRight}, BottomRight={bottomRight}, BottomLeft={bottomLeft}")
         target_topLeft, target_topRight, target_bottomRight, target_bottomLeft = topLeft, topRight, bottomRight, bottomLeft
 
         #빨간색 바운딩 박스 그리기
@@ -148,28 +144,16 @@ for field in result['images'][0]['fields']:
         cv2.line(roi_img, target_bottomRight, target_bottomLeft, (0,0,255), 2)
         cv2.line(roi_img, target_bottomLeft, target_topLeft, (0,0,255), 2)
 
-    if "서명" in text:
-        print(f"Bounding Box Coordinates for '(인)': TopLeft={topLeft}, TopRight={topRight}, BottomRight={bottomRight}, BottomLeft={bottomLeft}")
-        boundingbox = f"{topLeft[0]};{topLeft[1]};{topRight[0]};{topRight[1]};{bottomLeft[0]};{bottomLeft[1]};{topRight[0]};{topRight[1]}"
-        target_topLeft, target_topRight, target_bottomRight, target_bottomLeft = topLeft, topRight, bottomRight, bottomLeft
-
-        #빨간색 바운딩 박스 그리기
-        cv2.line(roi_img, target_topLeft, target_topRight, (0,0,255), 2)
-        cv2.line(roi_img, target_topRight, target_bottomRight, (0,0,255), 2)
-        cv2.line(roi_img, target_bottomRight, target_bottomLeft, (0,0,255), 2)
-        cv2.line(roi_img, target_bottomLeft, target_topLeft, (0,0,255), 2)
+        boundingbox = f"{topLeft[0]};{topLeft[1]};{topRight[0]};{topRight[1]};{bottomRight[0]};{bottomRight[1]};{bottomLeft[0]};{bottomLeft[1]}"
 
 print(result_text)
-<<<<<<< HEAD
-=======
 
->>>>>>> 0ca662bcbe92d28310ca2b5cace84f45b16bfdb7
 # plt_imshow(["Original", "ROI"], [img, roi_img], figsize=(16, 10))
 
-with open('text/output.txt', 'w', encoding='utf-8') as output_file:
-    output_file.write(result_text)
 
-
+with open('text/boundingbox.txt', 'w', encoding='utf-8') as file:
+    file.write(boundingbox)
+    
 print("Text saved to: output.txt")
 
 
