@@ -5,8 +5,7 @@ import os
 import subprocess
 from cam import generate_frames
 
-
-app=Flask(__name__)
+app = Flask(__name__)
 
 @app.route('/')
 def index():
