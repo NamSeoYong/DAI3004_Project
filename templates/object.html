@@ -1,6 +1,3 @@
-<!--
-
-
 <!DOCTYPE html>
 <html lang="en">
   ​<link
@@ -8,7 +5,8 @@
     href="{{ url_for('static', filename='favicon.ico') }}"
   />
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
-  
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,54 +17,8 @@
     <h1>Signature</h1>
     <br />
   </header>
-  
+
   <body>
-  
-    <center>
-      <button style="width:18vw; height: 13vh;"  onclick="loadImage()">가</button>
-      <button style="width:18vw; height: 13vh;" onclick="loadImage()">나</button>
-      <button style="width:18vw; height: 13vh;" onclick="loadImage()">다</button>
-      <button style="width:18vw; height: 13vh;" onclick="loadImage()">라</button>
-      <button style="width:18vw; height: 13vh;" onclick="loadImage()">마</button>
- 
-
-
-      ​
-      <div class="file">
-       
-        <br /><br />
-        <br><br>
-
-        <div class="B">
-
-            <div id="left-container" style="float:left; width:45vw;">
-              <img id="loadedImage" src="{% static 'file_A.png'%}" style="display:block;">
-
-            </div>
-
-
-            <div id="right-container" style="float:right; width:45vw;">
-                <video autoplay="true" id="videoElement" style="width:45vw; height:50vh;"></video>
-
-                <canvas id="canvas" ></canvas>
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-        <br><br>
-            <button  style="width:85vw; height:7vh;" onclick="takeSnapshot()">촬영하기</button>
-            <div style="clear:both;"></div>
-            <br>
-
-            유사도 00% 
-    </center>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <img src="{{ url_for('video_feed') }}" width="640" height="480" />
   </body>
-  
 </html>
-
--->

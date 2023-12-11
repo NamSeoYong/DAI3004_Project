@@ -3,6 +3,7 @@ import time
 import base64
 import os
 import subprocess
+from cam import generate_frames
 
 
 app=Flask(__name__)
@@ -15,9 +16,13 @@ def index():
 def compare():
     return render_template("compare.html")
 
-@app.route('/cam')
-def cam():
-    return render_template('cam.html')
+@app.route('/obect')
+def object():
+    return render_template('object.html')
+
+@app.route('/video_feed')
+def video_feed():
+    return Response(generate_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/upload-image', methods=['POST'])
 def upload_image():
@@ -72,7 +77,6 @@ def receive_image_choice():
     with open('text/click.txt', 'w', encoding='utf-8') as output_file:
         output_file.write(letter)    
     return '',204
-
 
 if __name__=='__main__':
     app.run(host='0.0.0.0', port=443, debug=True)

@@ -155,7 +155,7 @@ for field in result['images'][0]['fields']:
    
 print(result_text)
  
-plt_imshow(["Original", "ROI"], [img, roi_img], figsize=(16, 10))
+# plt_imshow(["Original", "ROI"], [img, roi_img], figsize=(16, 10))
 
 
 
