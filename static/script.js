@@ -1,5 +1,12 @@
 
-
+function playAudio(filePath) {
+    const audioElement = document.createElement('audio');
+    audioElement.src = filePath;
+  
+    audioElement.addEventListener('canplaythrough', () => {
+      audioElement.play();
+    });
+}
 
 // 전역 변수 선언
 var video, canvas, context;
@@ -26,6 +33,7 @@ window.onload = function () {
 
 
 function takeSnapshot() {
+    playAudio("static/tts/찰칵.mp3");
     // video와 canvas가 DOM에 존재하는지 확인합니다.
     if (video && canvas) {
         // videoWidth와 videoHeight 속성이 사용 가능한지 확인합니다.
@@ -92,16 +100,19 @@ function loadImage(letter) {
         img1.style.display = 'block';  // 이미지를 보이게 합니다.
         img2.style.display = 'none';
         img3.style.display = 'none';
+        playAudio("static/tts/A.mp3");
         console.log('Image1 should be visible now');
     } else if (letter == 'B') {
         img1.style.display = 'none';  // 이미지를 보이게 합니다.
         img2.style.display = 'block';
         img3.style.display = 'none';
+        playAudio("static/tts/B.mp3");
         console.log('Image2 should be visible now');
     } else if (letter == 'C') {
         img1.style.display = 'none';  // 이미지를 보이게 합니다.
         img2.style.display = 'none';
         img3.style.display = 'block';
+        playAudio("static/tts/C.mp3");
         console.log('Image3 should be visible now');
     } else {
         console.log('Failed to find the image element');
