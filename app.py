@@ -36,7 +36,7 @@ def upload_image():
     image_bytes = base64.b64decode(image_data)
     
     # 이미지 파일로 저장합니다.
-    folder_path = 'uploads'
+    folder_path = 'static/uploads'
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
     file_path = os.path.join(folder_path, "uploaded_image.jpg")
@@ -51,6 +51,7 @@ def upload_image():
 def run_scripts():
     # 'a.py' 스크립트 실행
     result_a = subprocess.run(['python', 'ocr.py'], stdout=subprocess.PIPE)
+    result_a1 = subprocess.run(['python', 'ocr_capture.py'], stdout=subprocess.PIPE)
     #time.sleep(10)
     # 'b.py' 스크립트 실행
     result_b = subprocess.run(['python', 'comparison.py'], stdout=subprocess.PIPE)
