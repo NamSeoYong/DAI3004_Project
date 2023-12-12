@@ -83,19 +83,19 @@ def tts(position):
         sound = pygame.mixer.Sound("tts/SUCCESS.mp3")
         sound.play()
         time.sleep(0.1)
-    elif position == '좌':
+    elif position == '우':
         sound = pygame.mixer.Sound("tts/LEFT.mp3")
         sound.play()
         time.sleep(0.1)
-    elif position == '우':
+    elif position == '좌':
         sound = pygame.mixer.Sound("tts/RIGHT.mp3")
         sound.play()
         time.sleep(0.1)
-    elif position == '상':
+    elif position == '하':
         sound = pygame.mixer.Sound("tts/UP.mp3")
         sound.play()
         time.sleep(0.1)
-    elif position == '하':
+    elif position == '상':
         sound = pygame.mixer.Sound("tts/DOWN.mp3")
         sound.play()
         time.sleep(0.1)
