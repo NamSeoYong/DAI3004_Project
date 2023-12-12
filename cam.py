@@ -42,10 +42,10 @@ def generate_frames():
                         cnt += 1
                         cv2.circle(frame, (cx, cy), 5, (0, 255, 0), -1)
                         position = check_position(cx, cy, pt1, pt2, pt3, pt4)
-                        print(f"x: {cx}, y: {cy}, 위치: {position}")
+                        # print(f"x: {cx}, y: {cy}, 위치: {position}")
                         if cnt % 30 == 0:
                             tts(position)
-        print(cnt)
+        # print(cnt)
         ret, buffer = cv2.imencode('.jpg', frame)
         frame = buffer.tobytes()
 
