@@ -160,11 +160,6 @@ for field in result['images'][0]['fields']:
         cv2.line(roi_img, target_bottomLeft, target_topLeft, (0,0,255), 2)
 
 print(result_text)
-<<<<<<< HEAD
-=======
-
->>>>>>> 0ca662bcbe92d28310ca2b5cace84f45b16bfdb7
-# plt_imshow(["Original", "ROI"], [img, roi_img], figsize=(16, 10))
 
 with open('text/output.txt', 'w', encoding='utf-8') as output_file:
     output_file.write(result_text)

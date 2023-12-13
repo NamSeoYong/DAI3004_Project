@@ -43,7 +43,7 @@ def generate_frames():
                         cv2.circle(frame, (cx, cy), 5, (0, 255, 0), -1)
                         position = check_position(cx, cy, pt1, pt2, pt3, pt4)
                         # print(f"x: {cx}, y: {cy}, 위치: {position}")
-                        if cnt % 30 == 0:
+                        if cnt % 15 == 0:
                             tts(position)
         # print(cnt)
         ret, buffer = cv2.imencode('.jpg', frame)
@@ -82,20 +82,20 @@ def tts(position):
     if position == '확인':
         sound = pygame.mixer.Sound("tts/SUCCESS.mp3")
         sound.play()
-        time.sleep(0.1)
+        time.sleep(0.05)
     elif position == '우':
         sound = pygame.mixer.Sound("tts/LEFT.mp3")
         sound.play()
-        time.sleep(0.1)
+        time.sleep(0.05)
     elif position == '좌':
         sound = pygame.mixer.Sound("tts/RIGHT.mp3")
         sound.play()
-        time.sleep(0.1)
+        time.sleep(0.05)
     elif position == '하':
         sound = pygame.mixer.Sound("tts/UP.mp3")
         sound.play()
-        time.sleep(0.1)
+        time.sleep(0.05)
     elif position == '상':
         sound = pygame.mixer.Sound("tts/DOWN.mp3")
         sound.play()
-        time.sleep(0.1)
+        time.sleep(0.05)
