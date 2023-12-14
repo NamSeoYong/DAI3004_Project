@@ -55,10 +55,12 @@ def generate_frames():
     cap.release()
     pygame.quit()
 
+
 def parse(boundingbox_arr):
     tmp = boundingbox_arr.split(";")   
     arr = [int(i) for i in tmp]
     return arr
+
 
 def check_position(cx, cy, pt1, pt2, pt3, pt4):
     # 바운딩 박스의 x, y 범위 계산
