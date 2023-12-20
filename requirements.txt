@@ -1,0 +1,12 @@
+easyocr
+Flask
+matplotlib
+mediapipe
+numpy
+opencv-python
+Pillow
+pygame
+PyYAML
+requests
+scipy
+sounddevice

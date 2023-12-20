@@ -55,7 +55,7 @@ new_image_path = ''
 files = []
 
 if (cc == 'A'):
-    new_image_path = 'static/images/picture_A.jpg'
+    new_image_path = 'static/uploads/uploaded_image.jpg'
     files = [('file', open(new_image_path,'rb'))]
     
 elif (cc == 'B'):
