@@ -19,7 +19,8 @@
 3. [Pages](#pages)
 4. [서류 비교](#signature)
 5. [서명 하기](#comparison)
-6. [Demo](#demo)
+6. [파일 설명](#file-explain)
+7. [Demo](#demo)
 
 ### Folder Structure
 
@@ -27,36 +28,34 @@
 DAI3004_Project
 ├── LICENSE
 ├── README.md
-├── app.py
-├── cam.py
-├── comparison.py
-├── ocr.py
-├── ocr_capture.py
-├── src
+├── app.py                  // main python file
+├── cam.py                  // operating camera python code
+├── comparison.py           // document comparison python code
+├── ocr.py                  // ocr python code
+├── ocr_capture.py          // captured image ocr python code
+├── img
 ├── static
 │   ├── favicon.ico
 │   ├── file.jpg
 │   ├── images
-│   │   ├── file_A.png
-│   │   ├── file_B.png
-│   │   └── file_C.png
-│   ├── script.js
-│   ├── style.css
+│   │   ├── file_A.png      // scenario A image file
+│   │   ├── file_B.png      // scenario A image file
+│   │   └── file_C.png      // scenario A image file
+│   ├── script.js           // JavaScript code needed for the web
+│   ├── style.css           // CSS code needed for the web
 │   ├── tts
 │   └── uploads
 ├── templates
-│   ├── compare.html
-│   ├── index.html
-│   └── object.html
+│   ├── compare.html        // compare web html code
+│   ├── index.html          // main web html code
+│   └── object.html         // signature bounding box web html code
 ├── text
-│   ├── A.txt
-│   ├── B.txt
-│   ├── C.txt
-│   ├── boundingbox.txt
-│   ├── click.txt
-│   ├── output.txt
-│   └── result.txt
-├── tmp.md
+│   ├── A.txt               // result of scenario A ocr
+│   ├── B.txt               // result of scenario B ocr
+│   ├── C.txt               // result of scenario C ocr
+│   ├── boundingbox.txt     // coordinate of signature box
+│   ├── output.txt          // result of picture's ocr
+│   └── result.txt          // result of similarity of two documents
 └── tts
 ```
 
@@ -95,15 +94,17 @@ DAI3004_Project
 
 ### Comparison
 
-서류를 미리 전달받으면 DB에 저장하고, 이를 OCR을 진행한다. 이후, 사용자가 은행이나 시청 등의 기관에 가서 받은 서류를 촬영한 뒤 유사율을 확인해본다. 모든 과정은 TTS로 도움을 받을 수 있다.
+서류를 미리 전달받으면 DB에 저장하고, 이를 OCR을 진행한다. 이후, 사용자가 은행이나 시청 등의 기관에 가서 받은 서류를 촬영한 뒤 유사율을 확인해본다. 모든 과정은 TTS로 도움을 받을 수 있다. <br>
 OCR 한 후의 서류의 모습 <br>
 ![boundingbox](./img/boundingbox.png)
 
 ### Signature
 
+서류를 카메라로 촬영하면, (서명) 혹은 (인)이라고 써져있는 글자를 찾는다. 이를 바운딩 박스로 띄우고, 검지 손가락 위치와 비교하며 상, 하, 좌, 우로 손가락을 어디로 가야할지 TTS로 알려준다. 만약 바운딩 박스 안에 손가락이 위치한다면, 성공이라는 TTS가 나온다.
+
 ### Demo
 
-1. requirements를 설치한다.
+1. requirements에 적혀있는 모듈들을 설치한다.
 
 ```
 pip install -r requirements.txt
