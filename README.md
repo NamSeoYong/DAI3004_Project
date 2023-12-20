@@ -84,6 +84,15 @@ DAI3004_Project
 
 ### Pages
 
+메인 화면 <br>
+![mainpage](./img/main_page.png)
+
+서류 비교 <br>
+![comparison](./img/compare.png)
+
+서명 하기 <br>
+![signature](./img/hand.png)
+
 ### Demo
 
 1. requirements를 설치한다.
