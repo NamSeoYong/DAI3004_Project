@@ -16,9 +16,9 @@
 0. [Folder Structure](#folder-structure)
 1. [Deelopment Setting](#development-setting)
 2. [Libraries & Tools](#libraries--tools)
-3. [Pages]
-4. [서류 비교]
-5. [서명란 인식]
+3. [Pages](#pages)
+4. [서류 비교](#signature)
+5. [서명 하기](#comparison)
 6. [Demo](#demo)
 
 ### Folder Structure
@@ -87,11 +87,19 @@ DAI3004_Project
 메인 화면 <br>
 ![mainpage](./img/main_page.png)
 
-서류 비교 <br>
+서류 확인 <br>
 ![comparison](./img/compare.png)
 
 서명 하기 <br>
 ![signature](./img/hand.png)
+
+### Comparison
+
+서류를 미리 전달받으면 DB에 저장하고, 이를 OCR을 진행한다. 이후, 사용자가 은행이나 시청 등의 기관에 가서 받은 서류를 촬영한 뒤 유사율을 확인해본다. 모든 과정은 TTS로 도움을 받을 수 있다.
+OCR 한 후의 서류의 모습 <br>
+![boundingbox](./img/boundingbox.png)
+
+### Signature
 
 ### Demo
 
