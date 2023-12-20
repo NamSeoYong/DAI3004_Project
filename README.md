@@ -14,12 +14,12 @@
 ## Contents
 
 0. [Folder Structure](#folder-structure)
-1. [Deelopment Setting]
-2. [Libraries & Tools]
+1. [Deelopment Setting](#development-setting)
+2. [Libraries & Tools](#libraries--tools)
 3. [Pages]
 4. [서류 비교]
 5. [서명란 인식]
-6. [Demo]
+6. [Demo](#demo)
 
 ### Folder Structure
 
@@ -81,3 +81,21 @@ DAI3004_Project
 - scipy
 - sounddevice
 - etc...
+
+### Pages
+
+### Demo
+
+1. requirements를 설치한다.
+
+```
+pip install -r requirements.txt
+```
+
+2. 메인 디렉토리 내의 app.py를 실행한다.
+
+```
+python app.py
+```
+
+3. 본인이 설정한 포트로 접속한다. Ex) 'http://127.0.0.1:443'

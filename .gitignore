@@ -2,4 +2,5 @@ key.pem
 cert.pem
 __pycache__
 ./static/uploads
+tmp.md
 
