@@ -81,8 +81,8 @@ if img is not None:
 else:
     print("이미지를 읽는 데 문제가 발생했습니다.")
 
-api_url = "https://e6tqb8wkgp.apigw.ntruss.com/custom/v1/26841/d7f55303bdf438981aad17e4984a06521341e5ace1745fa94b459d554db93e6c/general"
-secret_key = "eml4VEFRQmZTaFBHZklqY0pzS1FlVGdJWlJKWFlsa3I="
+api_url = "your_api_url"
+secret_key = "your_sceret_key"
 
 
 
